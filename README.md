@@ -1,5 +1,5 @@
 ---
-title: Doccter Assitant App
+title: Medi Assist AI
 emoji: 🚀
 colorFrom: blue
 colorTo: green
