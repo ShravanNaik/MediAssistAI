@@ -1,3 +1,10 @@
+
+import sys
+import importlib
+importlib.import_module('pysqlite3')
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
+
 import streamlit as st
 from crewai import Agent, Task, Crew, LLM, Process
 import os
@@ -16,10 +23,6 @@ from langchain_openai import ChatOpenAI
 from pathlib import Path
 
 
-import sys
-import importlib
-importlib.import_module('pysqlite3')
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 # Load environment variables
 load_dotenv()
 os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY")
