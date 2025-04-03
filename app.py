@@ -152,7 +152,7 @@ def apply_custom_styling():
         background-color: white;
         transition: transform 0.3s ease;
         color: #333333;  /* Dark text color for better readability */
-        min-height: 200px;
+        min-height: 300px;
         border: 1px solid #e0e0e0;
     }
     .card:hover {
