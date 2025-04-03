@@ -1,3 +1,13 @@
+
+
+
+import sys
+import importlib
+importlib.import_module('pysqlite3')
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
+
+import streamlit as st
 st.markdown(
     """
     <style>
@@ -10,15 +20,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-
-import sys
-import importlib
-importlib.import_module('pysqlite3')
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-
-
-import streamlit as st
 from crewai import Agent, Task, Crew, LLM, Process
 import os
 from crewai_tools import ScrapeWebsiteTool, SerperDevTool, FileReadTool, DirectoryReadTool
