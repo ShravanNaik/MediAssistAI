@@ -152,7 +152,7 @@ def apply_custom_styling():
         background-color: white;
         transition: transform 0.3s ease;
         color: #333333;  /* Dark text color for better readability */
-        min-height: 200px;
+        min-height: 100px;
         border: 1px solid #e0e0e0;
     }
     .card:hover {
@@ -221,12 +221,15 @@ def progress_animation():
     status_text.empty()
 
 # Function to save task output to markdown file
-def save_task_output(task_name, output_content):
-    print(output_content)
+def save_task_output(task_name, output):
     filename = f"{output_dir}/{task_name}.md"
-    output_str = str(output_content)  
+    output_str = str(output)  
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(output_str)
+    
+    # Ensure alerts are properly captured if they exist in the output
+    if "## ALERTS" in output_str:
+        st.session_state.task_output_files["alerts"] = filename
     return filename
 
 # Function to parse markdown content
@@ -540,84 +543,269 @@ safety_officer = Agent(
 
 # Content for different pages
 if page == "Home":
-        st.markdown("<h1 class='main-header'>MediAssist AI</h1>", unsafe_allow_html=True)
-        st.markdown("<h3 class='sub-header'>Advanced Multi-Agent Medical Intelligence Platform</h3>", unsafe_allow_html=True)
+    # Hero Section using Streamlit components
+    st.markdown("""
+    <style>
+    .hero-container {
+        background: linear-gradient(135deg, #3498db, #2ecc71);
+        padding: 2.5rem;
+        border-radius: 15px;
+        color: white;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    </style>
+    <div class="hero-container">
+        <h1 style="color: white; margin-bottom: 0.5rem;">MediAssist AI</h1>
+        <h3 style="color: white; margin-top: 0; font-weight: 300;">
+        Advanced Multi-Agent Medical Intelligence Platform
+        </h3>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Add the powered by tag with Streamlit
+    st.markdown(
+        '<div style="text-align: center; margin-top: -30px; margin-bottom: 30px;">'
+        '<span style="background-color: rgba(255,255,255,0.2); padding: 0.5rem 1.5rem; border-radius: 30px; font-weight: 500;">'
+        'Powered by AI Medical Agents'
+        '</span>'
+        '</div>', 
+        unsafe_allow_html=True
+    )
+    
+    # Main Content
+  # Main Content - Centered
+    with st.container():
+        # Create a centered container using CSS
+        st.markdown("""
+        <style>
+        .centered-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        </style>
+        <div class="centered-container">
+        """, unsafe_allow_html=True)
         
         col1, col2 = st.columns([2, 1])
         
         with col1:
-            st.markdown("""
-            ### Welcome to the Future of Medical Decision Support
+            # Welcome Section using Streamlit components
+            with st.container():
+                st.markdown("### Welcome to the Future of Medical Decision Support")
+                st.markdown("""
+                MediAssist AI leverages a sophisticated multi-agent system powered by artificial intelligence 
+                to provide comprehensive support for healthcare professionals.
+                """)
+                
+                # Info box using Streamlit
+                st.info("""
+                ⚡ Quick, accurate, and evidence-based medical insights
+                """)
             
-            MediAssist AI leverages a sophisticated multi-agent system powered by artificial intelligence 
-            to provide comprehensive support for healthcare professionals.
-            
-            Our platform combines the expertise of specialized AI agents:
-            
-            - **Primary Diagnostician**: Coordinates the diagnostic process
-            - **Specialist Diagnostician**: Provides specialized expertise for complex conditions
-            - **Treatment Planner**: Develops personalized treatment strategies
-            - **Clinical Pharmacologist**: Ensures medication safety and efficacy
-            - **Medical Researcher**: Integrates current medical literature
-            - **Patient Educator**: Creates accessible patient materials
-            - **Safety Officer**: Identifies potential risks and safety concerns
-            
-            Each agent contributes their specialized knowledge while collaborating to deliver 
-            a comprehensive medical assessment tailored to the individual patient.
-            """)
-            
-            # Feature cards - UPDATED VERSION
+            # Features Section using Streamlit components
             st.markdown("### Key Features")
+            features_col1, features_col2 = st.columns(2)
             
-            # Create three columns for the feature cards
-            col1, col2, col3 = st.columns(3)
+            with features_col1:
+                # Feature 1
+                with st.container():
+                    st.markdown("#### 🔍 Advanced Diagnostics")
+                    st.markdown("Multi-agent collaboration for thorough diagnostic assessments")
+                
+                # Feature 2
+                with st.container():
+                    st.markdown("#### ⚠️ Safety Alerts")
+                    st.markdown("Critical warnings about drug interactions and contraindications")
             
-            with col1:
-                st.markdown("""
-                <div class="card">
-                    <h4>🔍 Advanced Diagnostics</h4>
-                    <p>Multi-agent collaboration for thorough diagnostic assessments, utilizing specialized expertise for complex conditions.</p>
-                </div>
-                """, unsafe_allow_html=True)
+            with features_col2:
+                # Feature 3
+                with st.container():
+                    st.markdown("#### 💊 Treatment Plans")
+                    st.markdown("Personalized treatment strategies based on latest guidelines")
                 
-            with col2:
+                # Feature 4
+                with st.container():
+                    st.markdown("#### 📚 Medical Research")
+                    st.markdown("Automatic integration of relevant medical literature")
+            
+            # How It Works Section using Streamlit components
+            st.markdown("### How It Works")
+            
+            # Step 1
+            col1_step, col2_step = st.columns([0.1, 0.9])
+            with col1_step:
                 st.markdown("""
-                <div class="card">
-                    <h4>💊 Medication Intelligence</h4>
-                    <p>Sophisticated analysis of medication interactions, contraindications, and patient-specific dosing recommendations.</p>
-                </div>
+                <div style="
+                    background-color: #3498db;
+                    color: white;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 1rem;
+                ">1</div>
                 """, unsafe_allow_html=True)
-                
-            with col3:
+            with col2_step:
+                st.markdown("#### Enter Patient Information")
+                st.markdown("Provide symptoms, medical history, and other relevant details")
+            
+            # Step 2
+            col1_step, col2_step = st.columns([0.1, 0.9])
+            with col1_step:
                 st.markdown("""
-                <div class="card">
-                    <h4>📚 Evidence Integration</h4>
-                    <p>Automatic incorporation of relevant medical literature to support evidence-based decision making.</p>
-                </div>
+                <div style="
+                    background-color: #3498db;
+                    color: white;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 1rem;
+                ">2</div>
                 """, unsafe_allow_html=True)
+            with col2_step:
+                st.markdown("#### AI Agents Analyze")
+                st.markdown("Specialized AI agents collaborate to assess the case")
+            
+            # Step 3
+            col1_step, col2_step = st.columns([0.1, 0.9])
+            with col1_step:
+                st.markdown("""
+                <div style="
+                    background-color: #3498db;
+                    color: white;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 1rem;
+                ">3</div>
+                """, unsafe_allow_html=True)
+            with col2_step:
+                st.markdown("#### Receive Comprehensive Report")
+                st.markdown("Get diagnosis, treatment plan, research, and safety alerts")
         
         # with col2:
-        #     # Metrics cards
-        #     st.markdown("""
-        #     <div class="metric-card">
-        #         <h3>24/7</h3>
-        #         <p>Availability</p>
-        #     </div>
-        #     """, unsafe_allow_html=True)
+        #     # Quick Start Card using Streamlit
+        #     if st.button("Start New Consultation", key="new_consult_btn", use_container_width=True):
+        #         st.session_state['page'] = "New Consultation"
+        #         st.rerun()
             
+        #     # Stats Card using Streamlit
+        #     st.markdown("### Platform Stats")
             
-        #     st.markdown("""
-        #     <div class="metric-card">
-        #         <h3>1000+</h3>
-        #         <p>Medical Resources</p>
-        #     </div>
-        #     """, unsafe_allow_html=True)
+        #     # Stat 1
+        #     col1_stat, col2_stat = st.columns([0.2, 0.8])
+        #     with col1_stat:
+        #         st.markdown("""
+        #         <div style="
+        #             background-color: rgba(52,152,219,0.1);
+        #             width: 50px;
+        #             height: 50px;
+        #             border-radius: 50%;
+        #             display: flex;
+        #             align-items: center;
+        #             justify-content: center;
+        #         ">
+        #             <span style="font-size: 1.5rem; color: #3498db;">⚕️</span>
+        #         </div>
+        #         """, unsafe_allow_html=True)
+        #     with col2_stat:
+        #         st.markdown("**7**")
+        #         st.markdown("Specialized AI Agents")
             
-            # Call to action button
-            # st.markdown("<br>", unsafe_allow_html=True)
-            # if st.button("Start New Consultation"):
-            #     st.session_state['page'] = 'New Consultation'
-            #     st.rerun()
+        #     # Stat 2
+        #     col1_stat, col2_stat = st.columns([0.2, 0.8])
+        #     with col1_stat:
+        #         st.markdown("""
+        #         <div style="
+        #             background-color: rgba(46,204,113,0.1);
+        #             width: 50px;
+        #             height: 50px;
+        #             border-radius: 50%;
+        #             display: flex;
+        #             align-items: center;
+        #             justify-content: center;
+        #         ">
+        #             <span style="font-size: 1.5rem; color: #2ecc71;">📊</span>
+        #         </div>
+        #         """, unsafe_allow_html=True)
+        #     with col2_stat:
+        #         st.markdown("**1000+**")
+        #         st.markdown("Medical Resources")
+            
+        #     # Stat 3
+        #     col1_stat, col2_stat = st.columns([0.2, 0.8])
+        #     with col1_stat:
+        #         st.markdown("""
+        #         <div style="
+        #             background-color: rgba(155,89,182,0.1);
+        #             width: 50px;
+        #             height: 50px;
+        #             border-radius: 50%;
+        #             display: flex;
+        #             align-items: center;
+        #             justify-content: center;
+        #         ">
+        #             <span style="font-size: 1.5rem; color: #9b59b6;">⏱️</span>
+        #         </div>
+        #         """, unsafe_allow_html=True)
+        #     with col2_stat:
+        #         st.markdown("**24/7**")
+        #         st.markdown("Availability")
+            
+        #     # Testimonial Card using Streamlit
+        #     with st.container():
+        #         st.markdown("""
+        #         <div style="
+        #             position: relative;
+        #             padding-top: 20px;
+        #         ">
+        #             <div style="
+        #                 position: absolute;
+        #                 top: 0;
+        #                 left: 20px;
+        #                 font-size: 2rem;
+        #                 color: #3498db;
+        #             ">"</div>
+        #             <p style="font-style: italic; margin: 1.5rem 0 1rem 0; padding: 0 1rem;">
+        #             This AI system has transformed how we approach complex cases, providing comprehensive insights that complement our clinical expertise.
+        #             </p>
+        #         </div>
+        #         """, unsafe_allow_html=True)
+                
+        #         # Author info
+        #         col1_author, col2_author = st.columns([0.2, 0.8])
+        #         with col1_author:
+        #             st.markdown("""
+        #             <div style="
+        #                 background-color: #3498db;
+        #                 width: 40px;
+        #                 height: 40px;
+        #                 border-radius: 50%;
+        #                 display: flex;
+        #                 align-items: center;
+        #                 justify-content: center;
+        #                 color: white;
+        #                 font-weight: bold;
+        #             ">DR</div>
+        #             """, unsafe_allow_html=True)
+        #         with col2_author:
+        #             st.markdown("**Dr. Sarah Johnson**")
+        #             st.markdown("*Internal Medicine Specialist*")
+        
+        # # Close the centered container div
+        # st.markdown("</div>", unsafe_allow_html=True)
+        
+  
 
 elif page == "New Consultation":
     st.markdown("<h1 class='main-header'>New Patient Consultation</h1>", unsafe_allow_html=True)
@@ -1061,7 +1249,10 @@ elif page == "Past Consultations":
                         <h3>⚠️ Important Alerts</h3>
                         <div class="markdown-text-container">
                     """, unsafe_allow_html=True)
-                    st.markdown(selected_consultation["results"].get("alerts", "No critical alerts for this consultation."))
+                    # Check both possible locations for alerts
+                    alerts_content = selected_consultation["results"].get("alerts", 
+                                      selected_consultation["results"].get("safety", "No critical alerts for this consultation."))
+                    st.markdown(alerts_content)
                     st.markdown("</div></div>", unsafe_allow_html=True)
                 
                 with tab5:
@@ -1162,19 +1353,36 @@ elif page == "Medical Knowledge":
 
             synthesis_task = Task(
                 description=f"""
-                1. Organize the validated information about {search_term} into clear sections:
-                   - Definition and Overview
-                   - Clinical Presentation
-                   - Diagnostic Approach
-                   - Treatment Options
-                   - Recent Advances
-                   - Key References
-                2. Use clear, professional language appropriate for clinicians
-                3. Include important details but keep it concise
-                4. Format with proper headings and bullet points
+                1. Organize the validated information about {search_term} into clear sections with these exact headers:
+                   - ## DEFINITION: Definition and Overview
+                   - ## CLINICAL PRESENTATION: Clinical Presentation
+                   - ## DIAGNOSTIC APPROACH: Diagnostic Approach
+                   - ## TREATMENT OPTIONS: Treatment Options
+                   - ## RECENT ADVANCES: Recent Advances
+                   - ## REFERENCES: Key References
+                
+                2. For each section:
+                   - Start with a concise 2-3 sentence summary
+                   - Use bullet points for key features (- feature)
+                   - Bold important terms (**term**)
+                   - Separate concepts with blank lines
+                   - Keep paragraphs short (max 3 sentences)
+                
+                3. Example format:
+                   ## DEFINITION: 
+                   [Brief 1-2 sentence definition]
+                   
+                   **Key Characteristics:**
+                   - Characteristic 1
+                   - Characteristic 2
+                   - Characteristic 3
+                   
+                   [Additional details in short paragraphs]
+                
+                4. Use professional but accessible language
                 """,
                 agent=knowledge_synthesizer,
-                expected_output=f"A well-organized, clinically useful summary about {search_term}",
+                expected_output=f"A well-structured medical knowledge summary with clear sectioning and formatting",
                 context=[evaluation_task]
             )
 
@@ -1188,45 +1396,267 @@ elif page == "Medical Knowledge":
 
             result = knowledge_crew.kickoff()
 
+            # Function to parse sections from the result
+            def parse_knowledge_sections(content):
+                sections = {
+                    "definition": "",
+                    "clinical_presentation": "",
+                    "diagnostic_approach": "",
+                    "treatment_options": "",
+                    "recent_advances": "",
+                    "references": ""
+                }
+                
+                if not isinstance(content, str):
+                    content = str(content)
+                
+                # Parse definition
+                if "## DEFINITION:" in content:
+                    sections["definition"] = content.split("## DEFINITION:")[1].split("## CLINICAL PRESENTATION:")[0].strip()
+                
+                # Parse clinical presentation
+                if "## CLINICAL PRESENTATION:" in content:
+                    sections["clinical_presentation"] = content.split("## CLINICAL PRESENTATION:")[1].split("## DIAGNOSTIC APPROACH:")[0].strip()
+                
+                # Parse diagnostic approach
+                if "## DIAGNOSTIC APPROACH:" in content:
+                    sections["diagnostic_approach"] = content.split("## DIAGNOSTIC APPROACH:")[1].split("## TREATMENT OPTIONS:")[0].strip()
+                
+                # Parse treatment options
+                if "## TREATMENT OPTIONS:" in content:
+                    sections["treatment_options"] = content.split("## TREATMENT OPTIONS:")[1].split("## RECENT ADVANCES:")[0].strip()
+                
+                # Parse recent advances
+                if "## RECENT ADVANCES:" in content:
+                    sections["recent_advances"] = content.split("## RECENT ADVANCES:")[1].split("## REFERENCES:")[0].strip()
+                
+                # Parse references
+                if "## REFERENCES:" in content:
+                    sections["references"] = content.split("## REFERENCES:")[1].strip()
+                
+                return sections
+
+            # Parse the results into sections
+            knowledge_sections = parse_knowledge_sections(result)
+
+            # Custom CSS for knowledge cards
+            st.markdown("""
+            <style>
+            .knowledge-card {
+                background-color: white;
+                border-radius: 10px;
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+                border-left: 5px solid #3498db;
+                transition: transform 0.3s ease;
+            }
+            .knowledge-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            }
+            .knowledge-card h3 {
+                color: #2c3e50;
+                margin-top: 0;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #eee;
+            }
+            .knowledge-content {
+                line-height: 1.6;
+                font-size: 15px;
+            }
+            .knowledge-content p {
+                margin-bottom: 12px;
+            }
+            .knowledge-content ul {
+                padding-left: 25px;
+                margin-bottom: 15px;
+            }
+            .knowledge-content li {
+                margin-bottom: 8px;
+                list-style-type: disc;
+            }
+            .knowledge-content strong {
+                color: #2c3e50;
+                font-weight: 600;
+            }
+            .definition-card {
+                border-left-color: #3498db;
+            }
+            .clinical-card {
+                border-left-color: #2ecc71;
+            }
+            .diagnostic-card {
+                border-left-color: #f39c12;
+            }
+            .treatment-card {
+                border-left-color: #9b59b6;
+            }
+            .advances-card {
+                border-left-color: #e74c3c;
+            }
+            .references-card {
+                border-left-color: #1abc9c;
+            }
+            .knowledge-header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 15px;
+            }
+            .knowledge-icon {
+                font-size: 24px;
+                margin-right: 10px;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+
             # Display results
             st.success("Medical knowledge search complete!")
-            
-            # Display in expandable sections
+
+            # Display in expandable sections with enhanced styling
             with st.expander("📖 Definition and Overview", expanded=True):
-                if "Definition" in result:
-                    st.markdown(result["Definition"])
+                if knowledge_sections["definition"]:
+                    st.markdown(f"""
+                    <div class="knowledge-card definition-card">
+                        <div class="knowledge-header">
+                            <span class="knowledge-icon">📖</span>
+                            <h3>Definition and Overview</h3>
+                        </div>
+                        <div class="knowledge-content">
+                            {knowledge_sections["definition"]}
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
                 else:
-                    st.markdown(result)  # Fallback if structure not present
-            
+                    st.markdown("""
+                    <div class="knowledge-card definition-card">
+                        <div class="knowledge-header">
+                            <span class="knowledge-icon">📖</span>
+                            <h3>Definition and Overview</h3>
+                        </div>
+                        <p>No definition information available for this term.</p>
+                    </div>
+                    """, unsafe_allow_html=True)
+
             with st.expander("🩺 Clinical Presentation"):
-                if "Clinical Presentation" in result:
-                    st.markdown(result["Clinical Presentation"])
+                if knowledge_sections["clinical_presentation"]:
+                    st.markdown(f"""
+                    <div class="knowledge-card clinical-card">
+                        <div class="knowledge-header">
+                            <span class="knowledge-icon">🩺</span>
+                            <h3>Clinical Presentation</h3>
+                        </div>
+                        <div class="knowledge-content">
+                            {knowledge_sections["clinical_presentation"]}
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
                 else:
-                    st.info("No specific clinical presentation information found.")
-            
+                    st.markdown("""
+                    <div class="knowledge-card clinical-card">
+                        <div class="knowledge-header">
+                            <span class="knowledge-icon">🩺</span>
+                            <h3>Clinical Presentation</h3>
+                        </div>
+                        <p>No clinical presentation information available.</p>
+                    </div>
+                    """, unsafe_allow_html=True)
+
             with st.expander("🔍 Diagnostic Approach"):
-                if "Diagnostic Approach" in result:
-                    st.markdown(result["Diagnostic Approach"])
+                if knowledge_sections["diagnostic_approach"]:
+                    st.markdown(f"""
+                    <div class="knowledge-card diagnostic-card">
+                        <div class="knowledge-header">
+                            <span class="knowledge-icon">🔍</span>
+                            <h3>Diagnostic Approach</h3>
+                        </div>
+                        <div class="knowledge-content">
+                            {knowledge_sections["diagnostic_approach"]}
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
                 else:
-                    st.info("No specific diagnostic information found.")
-            
+                    st.markdown("""
+                    <div class="knowledge-card diagnostic-card">
+                        <div class="knowledge-header">
+                            <span class="knowledge-icon">🔍</span>
+                            <h3>Diagnostic Approach</h3>
+                        </div>
+                        <p>No diagnostic approach information available.</p>
+                    </div>
+                    """, unsafe_allow_html=True)
+
             with st.expander("💊 Treatment Options"):
-                if "Treatment Options" in result:
-                    st.markdown(result["Treatment Options"])
+                if knowledge_sections["treatment_options"]:
+                    st.markdown(f"""
+                    <div class="knowledge-card treatment-card">
+                        <div class="knowledge-header">
+                            <span class="knowledge-icon">💊</span>
+                            <h3>Treatment Options</h3>
+                        </div>
+                        <div class="knowledge-content">
+                            {knowledge_sections["treatment_options"]}
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
                 else:
-                    st.info("No specific treatment information found.")
-            
+                    st.markdown("""
+                    <div class="knowledge-card treatment-card">
+                        <div class="knowledge-header">
+                            <span class="knowledge-icon">💊</span>
+                            <h3>Treatment Options</h3>
+                        </div>
+                        <p>No treatment options information available.</p>
+                    </div>
+                    """, unsafe_allow_html=True)
+
             with st.expander("🚀 Recent Advances"):
-                if "Recent Advances" in result:
-                    st.markdown(result["Recent Advances"])
+                if knowledge_sections["recent_advances"]:
+                    st.markdown(f"""
+                    <div class="knowledge-card advances-card">
+                        <div class="knowledge-header">
+                            <span class="knowledge-icon">🚀</span>
+                            <h3>Recent Advances</h3>
+                        </div>
+                        <div class="knowledge-content">
+                            {knowledge_sections["recent_advances"]}
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
                 else:
-                    st.info("No recent advances information found.")
-            
-            with st.expander("📚 Key References"):
-                if "Key References" in result:
-                    st.markdown(result["Key References"])
+                    st.markdown("""
+                    <div class="knowledge-card advances-card">
+                        <div class="knowledge-header">
+                            <span class="knowledge-icon">🚀</span>
+                            <h3>Recent Advances</h3>
+                        </div>
+                        <p>No recent advances information available.</p>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+            with st.expander("📚 References"):
+                if knowledge_sections["references"]:
+                    st.markdown(f"""
+                    <div class="knowledge-card references-card">
+                        <div class="knowledge-header">
+                            <span class="knowledge-icon">📚</span>
+                            <h3>References</h3>
+                        </div>
+                        <div class="knowledge-content">
+                            {knowledge_sections["references"]}
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
                 else:
-                    st.info("References not available in this summary.")
+                    st.markdown("""
+                    <div class="knowledge-card references-card">
+                        <div class="knowledge-header">
+                            <span class="knowledge-icon">📚</span>
+                            <h3>References</h3>
+                        </div>
+                        <p>No references available.</p>
+                    </div>
+                    """, unsafe_allow_html=True)
 
             # Visualization of search results (mock data)
             st.subheader("Knowledge Graph")
@@ -1339,6 +1769,9 @@ elif page == "About":
         - **Medical Researcher**: Integrates current medical literature
         - **Patient Educator**: Creates accessible educational materials
         - **Safety Officer**: Identifies potential risks and precautions
+        - **medical_research_agent**: summarize the most relevant medical information from trusted sources
+        - **evidence_evaluator**: Evaluate the quality and relevance of medical evidence
+        - **knowledge_synthesizer**: Create clear, organized summaries of medical information
         
         #### How It Works
         The agents collaborate through a structured workflow, sharing information and building upon each other's expertise to develop a comprehensive medical assessment and plan.
@@ -1391,7 +1824,6 @@ elif page == "About":
 # Run the application
 if __name__ == "__main__":
     pass
-
 
 
 
