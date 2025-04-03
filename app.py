@@ -1,10 +1,10 @@
 
 
 
-import sys
-import importlib
-importlib.import_module('pysqlite3')
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+# import sys
+# import importlib
+# importlib.import_module('pysqlite3')
+# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 
 import streamlit as st
@@ -404,19 +404,6 @@ st.set_page_config(
     layout="wide", 
     page_icon="🩺"
 )
-hide_streamlit_style = """
-    <style>
-        #MainMenu {visibility: hidden;}  /* Hide hamburger menu */
-        footer {visibility: hidden;}  /* Hide "Made with Streamlit" footer */
-        header {visibility: hidden;}  /* Hide GitHub icon and other elements */
-    </style>
-"""
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-st.markdown("""
-    <style>
-    body { background-color: white !important; color: black !important; }
-    </style>
-    """, unsafe_allow_html=True)
 
 apply_custom_styling()
 
