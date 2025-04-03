@@ -23,12 +23,6 @@ from langchain_openai import ChatOpenAI
 from pathlib import Path
 
 
-hide_github_icon = """
-#GithubIcon {
-  visibility: hidden;
-}
-"""
-st.markdown(hide_github_icon, unsafe_allow_html=True)
 
 # Load environment variables
 load_dotenv()
