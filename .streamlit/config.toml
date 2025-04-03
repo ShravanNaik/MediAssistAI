@@ -1,8 +1,2 @@
-[theme]
-showSidebarNav = false
-
-[browser]
-gatherUsageStats = false
-
-[server]
-showFooter = false
+[client]
+showMenu = false
