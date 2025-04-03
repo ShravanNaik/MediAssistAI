@@ -23,6 +23,12 @@ from langchain_openai import ChatOpenAI
 from pathlib import Path
 
 
+hide_github_icon = """
+#GithubIcon {
+  visibility: hidden;
+}
+"""
+
 # Load environment variables
 load_dotenv()
 os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY")
