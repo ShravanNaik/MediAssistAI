@@ -445,7 +445,7 @@ directory_tool = DirectoryReadTool()
 
 # Initialize LLM
 # llm = LLM(model="openai/gpt-4o-mini", temperature=0.7, api_key=os.environ["OPENAI_API_KEY"])
-llm = ChatOpenAI(model = "gpt-3.5-turbo-0125")
+llm = ChatOpenAI(model = "gpt-4o-mini")
 
 
 # Define Agents with more detailed roles, goals, and delegation capabilities
