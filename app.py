@@ -923,7 +923,7 @@ elif page == "New Consultation":
             st.success("Medical analysis complete!")
             
             # Debug: Print parsed results
-            st.write("Parsed results:", parsed_results.keys())
+
             
             # Display all sections that have content
             sections = [
