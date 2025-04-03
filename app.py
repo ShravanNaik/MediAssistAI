@@ -39,7 +39,6 @@ os.makedirs(temp_output_dir, exist_ok=True)
 # Function to load and display logo
 def load_logo():
     return "https://img.icons8.com/color/96/000000/caduceus.png"
-
 # Function for page styling
 def apply_custom_styling():
     st.markdown("""
@@ -50,6 +49,11 @@ def apply_custom_styling():
         text-align: center;
         font-size: 2.5em;
         margin-bottom: 0.5em;
+    }
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+    .viewerBadge_text__1JaDK {
+        display: none;
     }
     .sub-header {
         font-family: 'Helvetica Neue', sans-serif;
