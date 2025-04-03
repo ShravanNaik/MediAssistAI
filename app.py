@@ -1245,27 +1245,7 @@ elif page == "Medical Knowledge":
 
     else:
         # Show knowledge base statistics when no search is active
-        st.subheader("Knowledge Base Statistics")
-        
-        # Create mock visualization of knowledge sources
-        knowledge_data = {
-            "Category": ["Clinical Guidelines", "Medical Journals", "Drug Databases", "Disease Profiles"],
-            "Resources": [1245, 18750, 4320, 2780],
-            "Last Updated": ["April 2025", "March 2025", "February 2025", "January 2025"]
-        }
-        
-        df = pd.DataFrame(knowledge_data)
-        st.dataframe(df, use_container_width=True, hide_index=True)
-        
-        # Quick search suggestions
-        st.subheader("Quick Search Topics")
-        cols = st.columns(4)
-        common_topics = ["Hypertension", "Diabetes", "Asthma", "Depression"]
-        for i, topic in enumerate(common_topics):
-            with cols[i]:
-                if st.button(topic):
-                    st.session_state.quick_search = topic
-                    st.rerun()
+        pass
 
 # elif page == "Settings":
 #     st.markdown("<h1 class='main-header'>MediAssist AI Settings</h1>", unsafe_allow_html=True)
