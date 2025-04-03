@@ -405,14 +405,12 @@ st.set_page_config(
     page_icon="🩺",
     initial_sidebar_state="expanded"
 )
-hide_streamlit_style = """
+hide_github_icon = """
     <style>
-        #MainMenu {visibility: hidden;}  /* Hide hamburger menu */
-        footer {visibility: hidden;}  /* Hide Streamlit footer */
-        header > div:first-child {visibility: hidden;}  /* Hide GitHub icon and branding */
+        header [title="View source on GitHub"] {display: none;}
     </style>
 """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+st.markdown(hide_github_icon, unsafe_allow_html=True)
 
 apply_custom_styling()
 
