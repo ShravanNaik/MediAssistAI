@@ -37,12 +37,6 @@ temp_output_dir = "temp_outputs"
 os.makedirs(temp_output_dir, exist_ok=True)
 
 
-hide_menu_style = """
-    <style>
-        #MainMenu {visibility: hidden;}
-    </style>
-"""
-st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 # Function to load and display logo
 def load_logo():
@@ -411,18 +405,12 @@ st.set_page_config(
     page_icon="🩺",
     initial_sidebar_state="expanded"
 )
-st.markdown(
-    """
+hide_menu_style = """
     <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
-    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
-    .viewerBadge_text__1JaDK {
-        display: none;
-    }
+        #MainMenu {visibility: hidden;}
     </style>
-    """,
-    unsafe_allow_html=True
-)
+"""
+st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 apply_custom_styling()
 
