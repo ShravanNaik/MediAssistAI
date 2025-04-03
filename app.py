@@ -402,15 +402,16 @@ if 'task_output_files' not in st.session_state:
 st.set_page_config(
     page_title="MediAssist AI", 
     layout="wide", 
-    page_icon="🩺",
-    initial_sidebar_state="expanded"
+    page_icon="🩺"
 )
-hide_github_icon = """
+hide_streamlit_style = """
     <style>
-        header [title="View source on GitHub"] {display: none;}
+        #MainMenu {visibility: hidden;}  /* Hide hamburger menu */
+        footer {visibility: hidden;}  /* Hide "Made with Streamlit" footer */
+        header {visibility: hidden;}  /* Hide GitHub icon and other elements */
     </style>
 """
-st.markdown(hide_github_icon, unsafe_allow_html=True)
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 apply_custom_styling()
 
