@@ -7,3 +7,4 @@ langchain_community
 python-docx
 langchain_groq
 pysqlite3-binary
+plotly
