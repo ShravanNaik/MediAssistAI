@@ -405,12 +405,14 @@ st.set_page_config(
     page_icon="🩺",
     initial_sidebar_state="expanded"
 )
-hide_menu_style = """
+hide_streamlit_style = """
     <style>
-        #MainMenu {visibility: hidden;}
+        #MainMenu {visibility: hidden;}  /* Hide hamburger menu */
+        footer {visibility: hidden;}  /* Hide "Made with Streamlit" footer */
+        header {visibility: hidden;}  /* Hide GitHub icon and other elements */
     </style>
 """
-st.markdown(hide_menu_style, unsafe_allow_html=True)
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 apply_custom_styling()
 
