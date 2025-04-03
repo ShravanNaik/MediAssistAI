@@ -407,6 +407,8 @@ st.set_page_config(
 )
 hide_streamlit_style = """
     <style>
+        #MainMenu {visibility: hidden;}  /* Hide hamburger menu */
+        footer {visibility: hidden;}  /* Hide Streamlit footer */
         header > div:first-child {visibility: hidden;}  /* Hide GitHub icon and branding */
     </style>
 """
