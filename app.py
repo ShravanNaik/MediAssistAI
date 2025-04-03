@@ -1369,7 +1369,7 @@ elif page == "About":
     
     with col2:
         # Display a mock architecture diagram
-        st.image("https://miro.medium.com/max/1400/1*yNt1Qubank2Pp9zD0EIJdw.png", caption="Multi-Agent System Architecture", use_container_width=True)
+        st.image("http://miro.medium.com/max/1400/1*yNt1Qubank2Pp9zD0EIJdw.png", caption="Multi-Agent System Architecture", use_container_width=True)
         
         st.markdown("#### Version Information")
         st.markdown("- **AI Framework:** CrewAI")
