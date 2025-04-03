@@ -604,22 +604,22 @@ if page == "Home":
                 </div>
                 """, unsafe_allow_html=True)
         
-        with col2:
-            # Metrics cards
-            st.markdown("""
-            <div class="metric-card">
-                <h3>24/7</h3>
-                <p>Availability</p>
-            </div>
-            """, unsafe_allow_html=True)
+        # with col2:
+        #     # Metrics cards
+        #     st.markdown("""
+        #     <div class="metric-card">
+        #         <h3>24/7</h3>
+        #         <p>Availability</p>
+        #     </div>
+        #     """, unsafe_allow_html=True)
             
             
-            st.markdown("""
-            <div class="metric-card">
-                <h3>1000+</h3>
-                <p>Medical Resources</p>
-            </div>
-            """, unsafe_allow_html=True)
+        #     st.markdown("""
+        #     <div class="metric-card">
+        #         <h3>1000+</h3>
+        #         <p>Medical Resources</p>
+        #     </div>
+        #     """, unsafe_allow_html=True)
             
             # Call to action button
             # st.markdown("<br>", unsafe_allow_html=True)
