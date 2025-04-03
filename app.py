@@ -1,3 +1,6 @@
+#MainMenu {
+  visibility: hidden;
+}
 
 import sys
 import importlib
