@@ -412,6 +412,11 @@ hide_streamlit_style = """
     </style>
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+st.markdown("""
+    <style>
+    body { background-color: white !important; color: black !important; }
+    </style>
+    """, unsafe_allow_html=True)
 
 apply_custom_styling()
 
