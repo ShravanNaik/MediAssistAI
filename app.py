@@ -448,7 +448,7 @@ primary_diagnostician = Agent(
     identifying patterns in symptoms and prioritizing potential conditions based on likelihood.""",
     llm=llm,
     verbose=True,
-    max_iter=2,
+    max_iter=4,
     allow_delegation=True,
     tools=[search_tool, scrape_tool]
 )
@@ -461,7 +461,7 @@ specialist_diagnostician = Agent(
     Your specialized knowledge allows for more accurate diagnosis of complex or rare conditions.""",
     llm=llm,
     verbose=True,
-    max_iter=2,
+    max_iter=4,
     allow_delegation=True,
     tools=[search_tool, scrape_tool]
 )
@@ -475,7 +475,7 @@ treatment_advisor = Agent(
     specific needs of each patient.""",
     llm=llm,
     verbose=True,
-    max_iter=2,
+    max_iter=4,
     allow_delegation=True,
     tools=[search_tool, scrape_tool]
 )
@@ -490,7 +490,7 @@ pharmacology_specialist = Agent(
     llm=llm,
     verbose=True,
     allow_delegation=False,
-    max_iter=2,
+    max_iter=4,
     tools=[search_tool, scrape_tool]
 )
 
@@ -504,7 +504,7 @@ medical_researcher = Agent(
     llm=llm,
     verbose=True,
     allow_delegation=False,
-    max_iter=2,
+    max_iter=4,
     tools=[search_tool, scrape_tool]
 )
 
@@ -518,7 +518,7 @@ patient_educator = Agent(
     llm=llm,
     verbose=True,
     allow_delegation=False,
-    max_iter=2,
+    max_iter=4,
     tools=[search_tool, scrape_tool]
 )
 
@@ -532,7 +532,7 @@ safety_officer = Agent(
     llm=llm,
     verbose=True,
     allow_delegation=False,
-    max_iter=2,
+    max_iter=4,
     tools=[search_tool, scrape_tool]
 )
 
