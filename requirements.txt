@@ -12,3 +12,5 @@ pandas
 folium 
 streamlit-folium
 streamlit-geolocation
+serpapi
+google-search-results
