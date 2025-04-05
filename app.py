@@ -428,15 +428,12 @@ hide_footer_style = """
 
 st.markdown(hide_footer_style, unsafe_allow_html=True)
 
-hide_github_icon = """
-    <style>
-    a[href*="https://github.com"] {
-        display: none !important;
-    }
-    </style>
+hide_streamlit_style = """
+<style>
+footer {visibility: hidden;}
+</style>
 """
-
-st.markdown(hide_github_icon, unsafe_allow_html=True)
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 
 
