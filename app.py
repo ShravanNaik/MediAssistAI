@@ -430,22 +430,12 @@ st.markdown(hide_footer_style, unsafe_allow_html=True)
 
 hide_streamlit_style = """
     <style>
-    /* Hide hamburger menu and header */
     #MainMenu {visibility: hidden;}
     header {visibility: hidden;}
-
-    /* Hide entire footer */
     footer {visibility: hidden;}
-    .st-emotion-cache-zq5wmm {display: none;}
-    .st-emotion-cache-13ln4jf {display: none;}
-
-    /* Extra fallback for "Made with Streamlit" footer */
-    .viewerBadge_container__1QSob {
-        display: none !important;
-    }
-    .stDeployButton {
-        display: none !important;
-    }
+    .viewerBadge_container__1QSob {display: none;}
+    .stDeployButton {display: none;}
+    .st-emotion-cache-1r6slb0 {display: none;}  /* Common container for footer */
     </style>
 """
 
