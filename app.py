@@ -428,18 +428,15 @@ hide_footer_style = """
 
 st.markdown(hide_footer_style, unsafe_allow_html=True)
 
-hide_streamlit_style = """
+hide_github_icon = """
     <style>
-    #MainMenu {visibility: hidden;}
-    header {visibility: hidden;}
-    footer {visibility: hidden;}
-    .viewerBadge_container__1QSob {display: none;}
-    .stDeployButton {display: none;}
-    .st-emotion-cache-1r6slb0 {display: none;}  /* Common container for footer */
+    a[href*="https://github.com"] {
+        display: none !important;
+    }
     </style>
 """
 
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+st.markdown(hide_github_icon, unsafe_allow_html=True)
 
 
 
