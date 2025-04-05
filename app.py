@@ -1101,7 +1101,7 @@ elif page == "New Consultation":
             progress_animation()
             
             # Run the crew
-            with st.spinner("AI Medical Agents are analyzing the case..."):
+            with st.spinner("AI Medical Agents crew are analyzing the case please be patient..."):
                 result = medical_crew.kickoff()
                 
                 # Debug: Print task output files
