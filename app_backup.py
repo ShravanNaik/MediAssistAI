@@ -411,6 +411,28 @@ st.set_page_config(
     page_icon="🩺"
 )
 
+
+hide_footer_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    
+    /* This targets GitHub icon in the footer */
+    .st-emotion-cache-1y4p8pa.ea3mdgi1 {
+        display: none !important;
+    }
+
+    /* This targets the entire footer area */
+    .st-emotion-cache-164nlkn {
+        display: none !important;
+    }
+    </style>
+"""
+
+st.markdown(hide_footer_style, unsafe_allow_html=True)
+
+
 apply_custom_styling()
 
 # Sidebar Navigation
