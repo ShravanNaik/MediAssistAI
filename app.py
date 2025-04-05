@@ -408,25 +408,58 @@ st.set_page_config(
     page_icon="🩺"
 )
 
-hide_footer_style = """
-    <style>
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
+# hide_footer_style = """
+#     <style>
+#     #MainMenu {visibility: hidden;}
+#     footer {visibility: hidden;}
+#     header {visibility: hidden;}
     
-    /* This targets GitHub icon in the footer */
-    .st-emotion-cache-1y4p8pa.ea3mdgi1 {
-        display: none !important;
-    }
+#     /* This targets GitHub icon in the footer */
+#     .st-emotion-cache-1y4p8pa.ea3mdgi1 {
+#         display: none !important;
+#     }
 
-    /* This targets the entire footer area */
-    .st-emotion-cache-164nlkn {
-        display: none !important;
-    }
-    </style>
-"""
+#     /* This targets the entire footer area */
+#     .st-emotion-cache-164nlkn {
+#         display: none !important;
+#     }
+#     </style>
+# """
 
-st.markdown(hide_footer_style, unsafe_allow_html=True)
+# st.markdown(hide_footer_style, unsafe_allow_html=True)
+
+hide_streamlit_style = """
+                <style>
+                div[data-testid="stToolbar"] {
+                visibility: hidden;
+                height: 0%;
+                position: fixed;
+                }
+                div[data-testid="stDecoration"] {
+                visibility: hidden;
+                height: 0%;
+                position: fixed;
+                }
+                div[data-testid="stStatusWidget"] {
+                visibility: hidden;
+                height: 0%;
+                position: fixed;
+                }
+                #MainMenu {
+                visibility: hidden;
+                height: 0%;
+                }
+                header {
+                visibility: hidden;
+                height: 0%;
+                }
+                footer {
+                visibility: hidden;
+                height: 0%;
+                }
+                </style>
+                """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 
 
