@@ -408,6 +408,19 @@ st.set_page_config(
     page_icon="🩺"
 )
 
+hide_streamlit_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    header {visibility: hidden;}
+    footer {visibility: hidden;}
+    .st-emotion-cache-1dp5vir {display: none;}  /* This hides the GitHub/Fork buttons */
+    </style>
+"""
+
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+
+
 apply_custom_styling()
 
 # Sidebar Navigation
